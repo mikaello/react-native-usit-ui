@@ -52,4 +52,4 @@ Here is a list of all components included in this library:
 * [FloatingButton](./docs/FloatingButton.md)
 * [AchievementModal](./docs/AchievementModal.md)
 * [CircularTimeSlider](./docs/CircularTimeSlider.md)
-# [GradientBackground](./docs/GradientBackground.md)
+* [GradientBackground](./docs/GradientBackground.md)
