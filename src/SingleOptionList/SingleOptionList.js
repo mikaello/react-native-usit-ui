@@ -16,6 +16,7 @@ type Props = {
     unchecked: (color: string) => React.Component<*>,
   },
   defaultSelected?: number | string,
+  transparent?: boolean,
 };
 
 type States = {
@@ -55,7 +56,7 @@ class SingleOptionList extends React.Component<Props, States> {
   }
 
   render() {
-    const { color, icons, items, onTextInputChange } = this.props;
+    const { color, icons, items, onTextInputChange, transparent } = this.props;
 
     return (
       <ScrollView
@@ -74,6 +75,7 @@ class SingleOptionList extends React.Component<Props, States> {
             selected={this.state.selected === element.id}
             onPress={() => this.onSelect(element.id)}
             onTextInputChange={onTextInputChange}
+            transparent={transparent}
           />
         ))}
       </ScrollView>

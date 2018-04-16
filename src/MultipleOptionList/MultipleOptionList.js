@@ -29,6 +29,7 @@ type Props = {
     checked: (color: string) => React.Component<*>,
     unchecked: (color: string) => React.Component<*>,
   },
+  transparent?: boolean
 };
 
 type State = {
@@ -66,7 +67,7 @@ class MultipleOptionList extends React.Component<Props, State> {
     this.state.selected.includes(id);
 
   render() {
-    const { color, icons, items, onTextInputChange } = this.props;
+    const { color, icons, items, onTextInputChange, transparent } = this.props;
     return (
       <ScrollView
         style={{ flex: 1 }}
@@ -87,6 +88,7 @@ class MultipleOptionList extends React.Component<Props, State> {
             selected={this.isSelected(element.id)}
             onPress={() => this.onSelect(element.id)}
             onTextInputChange={onTextInputChange}
+            transparent={transparent}
           />
         ))}
       </ScrollView>

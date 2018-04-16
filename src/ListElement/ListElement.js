@@ -34,6 +34,7 @@ type Props = {
     unchecked: (color: string, disabled: boolean) => React.Component<*>,
   },
   color: string,
+  transparent?: boolean,
 };
 
 class ListElement extends React.Component<Props> {
@@ -60,6 +61,7 @@ class ListElement extends React.Component<Props> {
       onPress,
       onTextInputChange,
       disabled,
+      transparent
     } = this.props;
     // The color design of the rows is based on opacity, so HEX values is used
     const selectedColor = color && `${color}33`;
@@ -73,7 +75,11 @@ class ListElement extends React.Component<Props> {
           style={[
             styles.row,
             {
-              backgroundColor: selected ? selectedColor : unselectedColor,
+              backgroundColor: transparent
+                ? 'transparent'
+                : selected
+                  ? selectedColor
+                  : unselectedColor,
             },
           ]}
         >
