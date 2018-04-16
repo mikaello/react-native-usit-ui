@@ -72,6 +72,7 @@ const defaultIcons = {
 | onTextInputChange | `() => {}`     |                                       `(input: string) => void`                                       | Callback with input when this element is listed with `textInput={true}`       |
 | color             | `#2294A8`      |                                               `string`                                                | Color of the button                                                           |
 | icons             | `defaultIcons` | `{ checked: (color: string) => React.Component<_>, unchecked:(color: string) => React.Component<_> }` | Icons should be added as an object. Can be react-native-vector-icons or Image |
+| transparent       | `false`        | `boolean`                     | Whether background color of row should be transparent or not. |
 
 ```js
 type ListItem = {
