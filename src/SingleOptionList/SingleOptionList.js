@@ -16,6 +16,7 @@ type Props = {
     unchecked: (color: string) => React.Component<*>,
   },
   defaultSelected?: number | string,
+  scrollDisabled?: boolean,
 };
 
 type States = {
@@ -55,7 +56,7 @@ class SingleOptionList extends React.Component<Props, States> {
   }
 
   render() {
-    const { color, icons, items, onTextInputChange } = this.props;
+    const { color, icons, items, onTextInputChange, scrollDisabled } = this.props;
 
     return (
       <ScrollView
@@ -64,6 +65,7 @@ class SingleOptionList extends React.Component<Props, States> {
           alignItems: 'center',
           justifyContent: 'center',
         }}
+        scrollEnabled={!scrollDisabled}
       >
         {items.map(element => (
           <ListElement
