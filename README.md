@@ -53,3 +53,4 @@ Here is a list of all components included in this library:
 * [AchievementModal](./docs/AchievementModal.md)
 * [CircularTimeSlider](./docs/CircularTimeSlider.md)
 * [GradientBackground](./docs/GradientBackground.md)
+* [ProgressCircle](./docs/ProgressCircle.md)
