@@ -12,3 +12,4 @@ export { default as FloatingButton } from './FloatingButton';
 export { default as AchievementModal } from './AchievementModal';
 export { default as CircularTimeSlider } from './CircularTimeSlider';
 export { default as GradientBackground } from './GradientBackground';
+export { default as ProgressCircle } from './ProgressCircle';
