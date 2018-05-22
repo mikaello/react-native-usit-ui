@@ -81,5 +81,6 @@ type ListItem = {
   subText?: string,
   textInput?: boolean, // Only one element may have this set to true
   inputPlaceholder?: string,
+  inputKeyboardType?: string,
 };
 ```

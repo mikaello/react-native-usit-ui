@@ -21,6 +21,7 @@ export type ListItem = {
   subText?: string,
   textInput?: boolean,
   inputPlaceholder?: string,
+  inputKeyboardType?: string,
 };
 
 type Props = {
@@ -110,6 +111,7 @@ class ListElement extends React.Component<Props> {
               style={styles.textInput}
               placeholder={item.inputPlaceholder}
               onChangeText={onTextInputChange}
+              keyboardType={item.inputKeyboardType}
             />
           )}
       </View>
