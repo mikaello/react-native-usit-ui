@@ -1,6 +1,6 @@
 {
   "name": "react-native-usit-ui",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Collection of user interface components",
   "main": "index.js",
   "scripts": {
@@ -43,14 +43,22 @@
       "prettier --single-quote true --trailing-comma all --parser flow --write",
       "git add"
     ],
-    "*.json": ["prettier --write", "git add"]
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
-  "keywords": ["ui", "react-native", "usit", "design"],
+  "keywords": [
+    "ui",
+    "react-native",
+    "usit",
+    "design"
+  ],
   "author": "USIT",
   "license": "MIT"
 }
