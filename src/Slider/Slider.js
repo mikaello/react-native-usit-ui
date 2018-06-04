@@ -234,15 +234,16 @@ class Slider extends React.Component<SliderProps, SliderState> {
         }}
       >
         <View style={{ flex: vertical && labels ? 1 : 0 }} />
-        {showValueLabel && this.state.value !== -1000 && (
+        {showValueLabel && (
           <CustomText
             style={{
+              position: vertical ? 'absolute' : undefined,
               textAlign: 'center',
               fontWeight: 'bold',
-              paddingRight: vertical ? 20 : 0,
+              left: vertical ? size/2 - 40 : 0,
             }}
           >
-            {this.state.value}
+            {this.state.value !== -1000 ? this.state.value : ' ' }
           </CustomText>
         )}
         <View
