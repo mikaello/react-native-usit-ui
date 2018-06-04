@@ -21,6 +21,7 @@ type SliderProps = {
   hideMarkers: boolean,
   color: string,
   labels?: string[],
+  showValueLabel?: boolean,
   vertical?: boolean,
   onValueChange: number => void,
   lineContainerHeight: number,
@@ -218,6 +219,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
       color,
       hideMarkers,
       lineContainerHeight,
+      showValueLabel,
     } = this.props;
 
     let valueInTrackRange = this.state.value <= max && this.state.value >= min;
@@ -232,6 +234,17 @@ class Slider extends React.Component<SliderProps, SliderState> {
         }}
       >
         <View style={{ flex: vertical && labels ? 1 : 0 }} />
+        {showValueLabel && this.state.value !== -1000 && (
+          <CustomText
+            style={{
+              textAlign: 'center',
+              fontWeight: 'bold',
+              paddingRight: vertical ? 20 : 0,
+            }}
+          >
+            {this.state.value}
+          </CustomText>
+        )}
         <View
           style={{
             flex: vertical ? (labels ? 0.2 : 1) : 0, // If slider set to vertical, but no label assigned
