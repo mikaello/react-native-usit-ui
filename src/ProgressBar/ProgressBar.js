@@ -8,7 +8,7 @@ type Props = {
   ofY: number,
   primaryColor?: string,
   secondaryColor?: string,
-  width?: number,
+  width?: number | string,
   height?: number,
   style?: Object,
 };
