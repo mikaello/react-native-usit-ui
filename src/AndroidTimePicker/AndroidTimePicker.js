@@ -21,6 +21,7 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Picker } from 'react-native-wheel-datepicker';
+import range from 'lodash/range';
 
 type AndroidTimePickerProps = {
   time: Date,
@@ -66,15 +67,8 @@ export default class AndroidTimePicker extends React.Component<
   };
 
   render() {
-    const [hours, minutes] = [[], []];
-
-    for (let i = 0; i <= 23; i += 1) {
-      hours.push(i);
-    }
-
-    for (let i = 0; i <= 59; i += 1) {
-      minutes.push(i);
-    }
+    const hours = range(24);
+    const minutes = range(60);
 
     return (
       <View style={styles.row}>
