@@ -16,3 +16,4 @@
   * [CircularTimeSlider](CircularTimeSlider.md)
   * [GradientBackground](GradientBackground.md)
   * [ProgressCircle](ProgressCircle.md)
+  * [ProgressBar](ProgressBar.md)

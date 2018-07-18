@@ -54,3 +54,4 @@ Here is a list of all components included in this library:
 * [CircularTimeSlider](./docs/CircularTimeSlider.md)
 * [GradientBackground](./docs/GradientBackground.md)
 * [ProgressCircle](./docs/ProgressCircle.md)
+* [ProgressBar](./docs/ProgressBar.md)
