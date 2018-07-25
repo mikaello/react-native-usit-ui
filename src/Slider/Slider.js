@@ -113,6 +113,10 @@ class Slider extends React.Component<SliderProps, SliderState> {
     });
   }
 
+  componentDidMount() {
+    setTimeout(this.measureHelper);
+  }
+
   componentWillUpdate() {
     if (
       Platform.OS === 'android' &&
@@ -120,10 +124,6 @@ class Slider extends React.Component<SliderProps, SliderState> {
     ) {
       return;
     }
-    this.props.animate && LayoutAnimation.easeInEaseOut();
-  }
-
-  componentWillUpdate() {
     this.props.animate && LayoutAnimation.easeInEaseOut();
   }
 
