@@ -7,15 +7,10 @@ import {
   View,
   Dimensions,
   LayoutAnimation,
-  Platform,
 } from 'react-native';
 import CustomText from '../CustomText';
 
-const { height, width } = Dimensions.get('window');
-
-const isIphoneX = () => {
-  return Platform.OS === 'ios' && (height === 812 || width === 812);
-};
+const { width } = Dimensions.get('window');
 
 type SliderProps = {
   animate: number,
@@ -383,9 +378,9 @@ const SliderLabels = ({
     <View
       style={{
         top: vertical ? undefined : 0,
-        width: setWidth(vertical),
+        width: vertical ? width * 0.42 : size,
         flexDirection: vertical ? 'column' : 'row',
-        alignSelf: 'center',
+        alignSelf: vertical ? undefined : 'center',
         justifyContent: 'space-between',
         height: vertical ? size : 20,
       }}
@@ -398,13 +393,6 @@ const SliderLabels = ({
     </View>
   </View>
 );
-
-const setWidth = vertical => {
-  if (vertical) {
-    return isIphoneX() ? width * 0.3 : undefined;
-  }
-  return size;
-};
 
 const styles = StyleSheet.create({
   trackDefault: {
