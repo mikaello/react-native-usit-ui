@@ -7,6 +7,7 @@ import {
   View,
   Dimensions,
   LayoutAnimation,
+  Platform,
 } from 'react-native';
 import CustomText from '../CustomText';
 
@@ -112,8 +113,14 @@ class Slider extends React.Component<SliderProps, SliderState> {
     });
   }
 
-  componentDidMount() {
-    setTimeout(this.measureHelper);
+  componentWillUpdate() {
+    if (
+      Platform.OS === 'android' &&
+      this.state.value === this.props.initialValue
+    ) {
+      return;
+    }
+    this.props.animate && LayoutAnimation.easeInEaseOut();
   }
 
   componentWillUpdate() {
