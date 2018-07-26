@@ -29,6 +29,7 @@ type SliderProps = {
   thumbStyle: View.propTypes.style,
   lineStyle: View.propTypes.style,
   markerStyle: View.propTypes.style,
+  showCenterMarker: boolean,
 };
 
 type SliderState = {
@@ -62,6 +63,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
     color: '#2294A8',
     hideMarkers: false,
     lineContainerHeight: 50,
+    showCenterMarker: false,
   };
 
   trackSize: number;
@@ -227,6 +229,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
       hideMarkers,
       lineContainerHeight,
       showValueLabel,
+      showCenterMarker,
     } = this.props;
 
     let valueInTrackRange = this.state.value <= max && this.state.value >= min;
@@ -311,6 +314,19 @@ class Slider extends React.Component<SliderProps, SliderState> {
                       ]}
                     />
                   )}
+                {showCenterMarker && (
+                  <SliderMarkers
+                    markerCount={0}
+                    width={10}
+                    style={[
+                      styles.defaultMarkerStyle,
+                      markerStyle,
+                      {
+                        backgroundColor: '#b3b3b3',
+                      },
+                    ]}
+                  />
+                )}
               </View>
               {this.state.value >= min && (
                 <View
