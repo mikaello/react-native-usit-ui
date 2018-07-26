@@ -385,9 +385,9 @@ const SliderLabels = ({
     <View
       style={{
         top: vertical ? undefined : 0,
-        width: vertical ? undefined : size,
+        width: vertical ? width * 0.42 : size,
         flexDirection: vertical ? 'column' : 'row',
-        alignSelf: 'center',
+        alignSelf: vertical ? undefined : 'center',
         justifyContent: 'space-between',
         height: vertical ? size : 20,
       }}
