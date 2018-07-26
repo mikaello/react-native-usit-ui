@@ -48,5 +48,4 @@ import { Slider } from 'react-native-usit-ui';
 | lineStyle           | `{ backgroundColor: '#b3b3b3', height: 1}`                                              | `View.propTypes.style` | Style object for the slider line                                                                                    |
 | markerStyle         | `{ width: 10, height: 10, borderRadius: 10 / 2, borderWidth: 1, borderColor: 'white' }` | `View.propTypes.style` | Style object for the markers                                                                                        |
 | thumbstyle          | `{ width: 25, height: 25, borderRadius: 25 / 2 }`                                       | `View.propTypes.style` | Style object for the thumb button                                                                                   |
-
 | showCenterMarker    | `false`                                                                                 | `boolean`              | Center marker only visible if this is set to true                                                                   |
