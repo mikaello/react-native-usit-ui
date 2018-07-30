@@ -321,9 +321,6 @@ class Slider extends React.Component<SliderProps, SliderState> {
                     style={[
                       styles.defaultMarkerStyle,
                       markerStyle,
-                      {
-                        backgroundColor: '#b3b3b3',
-                      },
                     ]}
                   />
                 )}
