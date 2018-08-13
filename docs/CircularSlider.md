@@ -76,7 +76,7 @@ class ClockPage extends React.Component<ClockPageProps, ClockPageState> {
 
 | Prop              | Default   | Type       | Description                                                                                     |
 | :---------------- | :-------- | :--------: | :---------------------------------------------------------------------------------------------- |
-| onUpdate          | `undefined`       | `() => {}` | ...                                                                                             |
+| onUpdate          | `undefined`       | `({startAngle: number, angleLength: number}) => void` | Callback to adjust start angle and angle length. See example above.                                                                                             |
 | startAngle        | `undefined`       | `number`   | Start angle for outer circle in radians. Values between 0 and 2 pi.                             |
 | angleLength       | `undefined`       | `number`   | Circumference of circle segment shown. Values between 0 and 2 pi.                               |
 | segments          | `undefined`       | `number`   | Number of segements for gradient color. More segements give a more fine grained gradient scale. |
