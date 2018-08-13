@@ -2,6 +2,14 @@
 
 ![Screenshot of circular slider](./screenshots/circularSlider.png)
 
+### Installation (iOS)
+
+If you get this error: 'No component found for view with name "RNSVGCircle", the libRNSVG.a library must be added manually to Build Phases in Xcode.
+
+Path: Libraries/RNSVG.xcodeproj/Products/libRNSV.a
+
+Instructions: https://facebook.github.io/react-native/docs/linking-libraries-ios
+
 ### Usage
 
 ```js
