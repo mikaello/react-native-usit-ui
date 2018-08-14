@@ -30,6 +30,8 @@ type SliderProps = {
   lineStyle: View.propTypes.style,
   markerStyle: View.propTypes.style,
   showCenterMarker: boolean,
+  onTouch?: () => void,
+  onRelease?: () => void,
 };
 
 type SliderState = {
@@ -64,6 +66,8 @@ class Slider extends React.Component<SliderProps, SliderState> {
     hideMarkers: false,
     lineContainerHeight: 50,
     showCenterMarker: false,
+    onTouch: () => {},
+    onRelease: () => {},
   };
 
   trackSize: number;
@@ -139,6 +143,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
   };
 
   handleTrackRelease() {
+    this.props.onRelease();
     this.props.onValueChange(this.state.value);
   }
 
@@ -156,6 +161,8 @@ class Slider extends React.Component<SliderProps, SliderState> {
 
     let position;
     let value;
+
+    this.props.onTouch();
 
     if (rangeOfTrack < 0) {
       this.previousPosition = 0;
