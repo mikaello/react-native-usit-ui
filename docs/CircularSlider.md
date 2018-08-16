@@ -20,6 +20,11 @@ import { G, Circle } from 'react-native-svg';
 
 import { CircularSlider } from 'react-native-usit-ui';
 
+type HoursAndMinutes = {
+  hour: number,
+  minute: number,
+};
+
 const SLIDER_ICON_TOP = (
   <Circle cx="9" cy="9" r="9" stroke="white" strokeWidth="2" fill="red" />
 );
@@ -34,6 +39,9 @@ class ClockPage extends React.Component<ClockPageProps, ClockPageState> {
     this.state = {
       startAngle: (Math.PI / 6) * 23,
       angleLength: (Math.PI / 6) * 8,
+      startTime: { hour: 23, minute: 0 },
+      endTime: { hour: 7, minute: 0 },
+      timeDiff: { hour: 8, minute: 0 },
     };
   }
 
@@ -41,6 +49,14 @@ class ClockPage extends React.Component<ClockPageProps, ClockPageState> {
     this.setState({
       startAngle: this.roundAngleToFives(startAngle),
       angleLength: this.roundAngleToFives(angleLength),
+    });
+  };
+
+  onUpdateTime = ({ startTime, endTime, timeDiff }) => {
+    this.setState({
+      startTime: startTime,
+      endTime: endTime,
+      timeDiff: timeDiff,
     });
   };
 
@@ -54,6 +70,7 @@ class ClockPage extends React.Component<ClockPageProps, ClockPageState> {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <CircularSlider
           onUpdate={this.onUpdate}
+          onUpdateTime={this.onUpdateTime}
           startAngle={this.state.startAngle}
           angleLength={this.state.angleLength}
           segments={20}
@@ -85,6 +102,7 @@ class ClockPage extends React.Component<ClockPageProps, ClockPageState> {
 | Prop              | Default   | Type       | Description                                                                                     |
 | :---------------- | :-------- | :--------: | :---------------------------------------------------------------------------------------------- |
 | onUpdate          | `undefined`       | `({startAngle: number, angleLength: number}) => void` | Callback to adjust start angle and angle length. See example above.                                                                                             |
+| onUpdateTime          | `() => {}`       | `({startTime: {hour: number, minute: number}, endTime: {hour: number, minute: number}, timeDiff: {hour: number, minute: number}}) => void` | Callback to get time corresponding to startAngle and angleLength. See example above.                                                                                             |
 | startAngle        | `undefined`       | `number`   | Start angle for outer circle in radians. Values between 0 and 2 pi.                             |
 | angleLength       | `undefined`       | `number`   | Circumference of circle segment shown. Values between 0 and 2 pi.                               |
 | segments          | `undefined`       | `number`   | Number of segements for gradient color. More segements give a more fine grained gradient scale. |
