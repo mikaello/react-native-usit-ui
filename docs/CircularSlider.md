@@ -18,7 +18,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { G, Circle } from 'react-native-svg';
 
-import CircularSlider from 'react-native-usit-ui';
+import { CircularSlider } from 'react-native-usit-ui';
 
 const SLIDER_ICON_TOP = (
   <Circle cx="9" cy="9" r="9" stroke="white" strokeWidth="2" fill="red" />
