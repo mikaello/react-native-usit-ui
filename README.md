@@ -56,3 +56,4 @@ Here is a list of all components included in this library:
 * [ProgressCircle](./docs/ProgressCircle.md)
 * [ProgressBar](./docs/ProgressBar.md)
 * [CircularSlider](./docs/CircularSlider.md)
+* [AndroidTimePicker](./docs/AndroidTimePicker.md)
