@@ -66,6 +66,7 @@ export default class CircularSlider extends PureComponent {
   /*
     static propTypes = {
         onUpdate: PropTypes.func.isRequired,
+        onUpdateTime: PropTypes.func,
         startAngle: PropTypes.number.isRequired,
         angleLength: PropTypes.number.isRequired,
         segments: PropTypes.number,
@@ -89,6 +90,7 @@ export default class CircularSlider extends PureComponent {
     gradientColorTo: '#ffcf00',
     clockFaceColor: '#9d9d9d',
     bgCircleColor: '#171717',
+    onUpdateTime: () => {},
   };
 
   state = {
@@ -103,7 +105,7 @@ export default class CircularSlider extends PureComponent {
       onPanResponderGrant: (evt, gestureState) => this.setCircleCenter(),
       onPanResponderMove: (evt, { moveX, moveY }) => {
         const { circleCenterX, circleCenterY } = this.state;
-        const { angleLength, startAngle, onUpdate } = this.props;
+        const { angleLength, startAngle, onUpdate, onUpdateTime } = this.props;
 
         const currentAngleStop = (startAngle + angleLength) % (2 * Math.PI);
         let newAngle =
@@ -124,6 +126,9 @@ export default class CircularSlider extends PureComponent {
           startAngle: newAngle,
           angleLength: newAngleLength % (2 * Math.PI),
         });
+        onUpdateTime(
+          this.updateTimeValues(newAngle, newAngleLength % (2 * Math.PI)),
+        );
       },
     });
 
@@ -133,7 +138,7 @@ export default class CircularSlider extends PureComponent {
       onPanResponderGrant: (evt, gestureState) => this.setCircleCenter(),
       onPanResponderMove: (evt, { moveX, moveY }) => {
         const { circleCenterX, circleCenterY } = this.state;
-        const { angleLength, startAngle, onUpdate } = this.props;
+        const { angleLength, startAngle, onUpdate, onUpdateTime } = this.props;
 
         const newAngle =
           Math.atan2(moveY - circleCenterY, moveX - circleCenterX) +
@@ -145,6 +150,7 @@ export default class CircularSlider extends PureComponent {
         }
 
         onUpdate({ startAngle, angleLength: newAngleLength });
+        onUpdateTime(this.updateTimeValues(startAngle, newAngleLength));
       },
     });
   }
@@ -152,6 +158,28 @@ export default class CircularSlider extends PureComponent {
   onLayout = () => {
     this.setCircleCenter();
   };
+
+  updateTimeValues = (startAngle, angleLength) => ({
+    startTime: this.calculateTimeFromAngle(startAngle),
+    endTime: this.calculateTimeFromAngle(
+      (startAngle + angleLength) % (2 * Math.PI),
+    ),
+    timeDiff: this.calculateTimeFromAngle(angleLength),
+  });
+
+  //timeToMinutes = time => time.h * 60 + time.m;
+
+  calculateTimeFromAngle(angle) {
+    const minutes = this.calculateMinutesFromAngle(angle);
+    const h = Math.floor(minutes / 60);
+    const m = minutes - h * 60;
+
+    return { hour: h, minute: m };
+  }
+
+  calculateMinutesFromAngle(angle) {
+    return Math.round(angle / ((2 * Math.PI) / (12 * 12))) * 5;
+  }
 
   setCircleCenter = () => {
     this._circle.measure((x, y, w, h, px, py) => {
