@@ -3,7 +3,7 @@
 ![Screenshot of circular slider](./screenshots/circularSlider.png)
 
 ### Installation
-Versions of react-native and react-native-svg need to be compatible. See https://www.npmjs.com/package/react-native-svg for version matching table. A downgrade of react-native-svg might be necessary.
+Versions of react-native and react-native-svg needs to be compatible. See https://www.npmjs.com/package/react-native-svg for version matching table. A downgrade of react-native-svg might be necessary.
 
 ## iOS
 If you get this error: 'No component found for view with name "RNSVGCircle", the libRNSVG.a library must be added manually to Build Phases in Xcode.
