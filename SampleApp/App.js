@@ -21,6 +21,7 @@ import SingleOptionExample from './src/SingleOptionList';
 import SliderExample from './src/Slider';
 import StepperExample from './src/Stepper';
 import GradientBackgroundExample from './src/GradientBackground';
+import CheckboxExample from './src/Checkbox';
 
 type Props = {};
 type State = {
@@ -35,6 +36,7 @@ type State = {
   showSlider: boolean,
   showStepper: boolean,
   showGradientBackground: boolean,
+  showCheckbox: boolean,
 };
 
 const initState: State = {
@@ -49,6 +51,7 @@ const initState: State = {
   showSlider: false,
   showStepper: false,
   showGradientBackground: false,
+  showCheckbox: false,
 };
 
 export default class App extends Component<Props, State> {
@@ -67,16 +70,19 @@ export default class App extends Component<Props, State> {
       ...this.statePreserveGradient(),
       showAccordion: !this.state.showAccordion,
     });
+
   toggleAchievementModal = () =>
     this.setState({
       ...this.statePreserveGradient(),
       showAchievementModal: !this.state.showAchievementModal,
     });
+
   toggleButton = () =>
     this.setState({
       ...this.statePreserveGradient(),
       showButton: !this.state.showButton,
     });
+
   toggleDivider = () =>
     this.setState({
       ...this.statePreserveGradient(),
@@ -87,35 +93,47 @@ export default class App extends Component<Props, State> {
       ...this.statePreserveGradient(),
       showFloatingButton: !this.state.showFloatingButton,
     });
+
   toggleMenuButton = () =>
     this.setState({
       ...this.statePreserveGradient(),
       showMenuButton: !this.state.showMenuButton,
     });
+
   toggleMultipleOption = () =>
     this.setState({
       ...this.statePreserveGradient(),
       showMultipleOption: !this.state.showMultipleOption,
     });
+
   toggleSingleOption = () =>
     this.setState({
       ...this.statePreserveGradient(),
       showSingleOption: !this.state.showSingleOption,
     });
+
   toggleSlider = () =>
     this.setState({
       ...this.statePreserveGradient(),
       showSlider: !this.state.showSlider,
     });
+
   toggleStepper = () =>
     this.setState({
       ...this.statePreserveGradient(),
       showStepper: !this.state.showStepper,
     });
+
   toggleGradientBackground = () =>
     this.setState({
       ...this.statePreserveGradient(),
       showGradientBackground: !this.state.showGradientBackground,
+    });
+
+  toggleCheckbox = () =>
+    this.setState({
+      ...this.statePreserveGradient(),
+      showCheckbox: !this.state.showCheckbox,
     });
 
   render() {
@@ -177,7 +195,10 @@ export default class App extends Component<Props, State> {
             <Text style={styles.item}>Stepper</Text>
           </TouchableOpacity>
           {this.state.showStepper && <StepperExample />}
-
+          <TouchableOpacity onPress={this.toggleCheckbox}>
+            <Text style={styles.item}>Checkbox</Text>
+          </TouchableOpacity>
+          {this.state.showCheckbox && <CheckboxExample />}
           <TouchableOpacity onPress={this.toggleGradientBackground}>
             <Text style={styles.item}>GradientBackground</Text>
           </TouchableOpacity>
