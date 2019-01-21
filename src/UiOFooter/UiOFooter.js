@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import {
+  Image,
+  Dimensions,
+  TouchableWithoutFeedback,
+  StyleSheet,
+} from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -7,6 +12,7 @@ type UiOFooterProps = {
   onPress: () => void,
   numberOfTriesBeforeAction?: number,
   touchInterval?: ?number,
+  style?: Object,
 };
 
 type UiOFooterState = {
@@ -66,11 +72,14 @@ class UiOFooter extends React.Component<UiOFooterProps, UiOFooterState> {
     return (
       <TouchableWithoutFeedback onPress={() => this.incrementTouchCounter()}>
         <Image
-          style={{
-            alignSelf: 'center',
-            height: 30,
-            width: width * 0.6,
-          }}
+          style={[
+            {
+              alignSelf: 'center',
+              height: 30,
+              width: width * 0.6,
+            },
+            StyleSheet.flatten(this.props.style),
+          ]}
           resizeMode="contain"
           source={require('./UiO_logo.png')}
         />
