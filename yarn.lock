@@ -4225,6 +4225,11 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
+moment@^2.19.1:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
+
 morgan@~1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.6.1.tgz#5fd818398c6819cba28a7cd6664f292fe1c0bbf2"
@@ -4853,6 +4858,13 @@ react-devtools-core@^2.5.0:
   dependencies:
     shell-quote "^1.6.1"
     ws "^2.0.3"
+
+react-native-wheel-datepicker@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-wheel-datepicker/-/react-native-wheel-datepicker-2.2.3.tgz#2a93f25819b9478033229f0e715c56de92b78fba"
+  integrity sha512-tnZJZbqdyaRFXBXuHFrijtcr4gxOPbUdtvM3XfceHvVGSKQVoBuaDYRFVe4qTdrR4+6c/OOgUFfRu3nYFSHReQ==
+  dependencies:
+    moment "^2.19.1"
 
 react-native@^0.49.5:
   version "0.49.5"
