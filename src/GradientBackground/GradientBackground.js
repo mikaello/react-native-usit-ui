@@ -13,7 +13,7 @@ type Props = {
 };
 
 const GradientBackground = ({ fromColor, toColor, direction }: Props) => (
-  <Svg style={styles.svg}>
+  <Svg style={styles.svg} viewBox="0 0 100 100" preserveAspectRatio="none">
     <Defs>
       <LinearGradient
         id="grad"
