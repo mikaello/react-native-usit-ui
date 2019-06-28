@@ -30,6 +30,7 @@ type Props = {
     unchecked: (color: string) => React.Component<*>,
   },
   scrollDisabled?: boolean,
+  selected?: Array<number | string>,
 };
 
 type State = {
@@ -52,22 +53,43 @@ class MultipleOptionList extends React.Component<Props, State> {
   }
 
   onSelect(id: number | string) {
+    const selected = this.props.selected
+      ? this.props.selected
+      : this.state.selected;
+
     const updatedSelected = this.isSelected(id)
-      ? this.state.selected.filter(value => value !== id)
-      : [...this.state.selected, id];
+      ? selected.filter(value => value !== id)
+      : [...selected, id];
 
     this.setState({ selected: updatedSelected });
     this.props.onChange(updatedSelected);
   }
 
-  isMaxOptionsSelected = (): boolean =>
-    this.props.maxOptions === this.state.selected.length;
+  isMaxOptionsSelected = (): boolean => {
+    const selected = this.props.selected
+      ? this.props.selected
+      : this.state.selected;
 
-  isSelected = (id: number | string): boolean =>
-    this.state.selected.includes(id);
+    return this.props.maxOptions === selected.length;
+  };
+
+  isSelected = (id: number | string): boolean => {
+    const selected = this.props.selected
+      ? this.props.selected
+      : this.state.selected;
+
+    return selected.includes(id);
+  };
 
   render() {
-    const { color, icons, items, onTextInputChange, scrollDisabled } = this.props;
+    const {
+      color,
+      icons,
+      items,
+      onTextInputChange,
+      scrollDisabled,
+    } = this.props;
+
     return (
       <ScrollView
         style={{ flex: 1 }}
