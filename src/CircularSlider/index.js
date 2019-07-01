@@ -231,14 +231,17 @@ export default class CircularSlider extends PureComponent {
 
     return (
       <View
-        style={{ width: containerWidth, height: containerWidth }}
+        style={{
+          width: containerWidth,
+          height: containerWidth,
+        }}
         onLayout={this.onLayout}
       >
         <Svg
           height={containerWidth}
           width={containerWidth}
           ref={circle => (this._circle = circle)}
-          viewBox="0 0 265 265"
+          viewBox={'0 0 ' + containerWidth + ' ' + containerWidth}
         >
           <Defs>
             {range(segments).map(i => {
