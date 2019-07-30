@@ -31,7 +31,7 @@ export default class ClockFace extends PureComponent {
             />
           );
         })}
-        <G transform={{ translate: '-0, -9' }}>
+        <G transform={{ translate: '-0, 4' }}>
           {range(12).map((h, i) => (
             <Text
               key={i}
