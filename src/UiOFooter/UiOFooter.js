@@ -11,6 +11,7 @@ const { width } = Dimensions.get('window');
 type UiOFooterProps = {
   onPress: () => void,
   numberOfTriesBeforeAction?: number,
+  language?: string,
   touchInterval?: ?number,
   style?: Object,
 };
@@ -81,7 +82,7 @@ class UiOFooter extends React.Component<UiOFooterProps, UiOFooterState> {
             StyleSheet.flatten(this.props.style),
           ]}
           resizeMode="contain"
-          source={require('./UiO_logo.png')}
+          source={ this.props.language === 'no' ? require('./UiO_logo.png') : require('./UiO_logo_en.png')}
         />
       </TouchableWithoutFeedback>
     );
