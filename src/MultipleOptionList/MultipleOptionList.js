@@ -22,6 +22,7 @@ const defaultIcons = {
 type Props = {
   items: Array<ListItem>,
   maxOptions: ?number,
+  defaultSelected?: Array<number | string>,
   onChange: (result: Array<string | number>) => void,
   onTextInputChange: string => void,
   color?: string,
@@ -47,7 +48,7 @@ class MultipleOptionList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selected: [],
+      selected: this.props.defaultSelected ? this.props.defaultSelected : [],
     };
   }
 
