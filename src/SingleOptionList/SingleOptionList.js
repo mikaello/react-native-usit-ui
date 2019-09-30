@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import ListElement from '../ListElement';
 import { RadioChecked, RadioUnchecked } from '../svg-icons';
 
@@ -17,6 +17,7 @@ type Props = {
   },
   selected?: number | string,
   scrollDisabled?: boolean,
+  optionalStyles?: Object,
 };
 
 type States = {
@@ -35,6 +36,9 @@ const defaultIcons = {
     </View>
   ),
 };
+
+defaultIcons.checked.displayName = 'CheckedIcon';
+defaultIcons.unchecked.displayName = 'UncheckedIcon';
 
 class SingleOptionList extends React.Component<Props, States> {
   static defaultProps = {
@@ -62,11 +66,11 @@ class SingleOptionList extends React.Component<Props, States> {
       items,
       onTextInputChange,
       scrollDisabled,
+      optionalStyles,
     } = this.props;
 
     return (
-      <ScrollView
-        style={{ flex: 1 }}
+      <View
         contentContainerStyle={{
           alignItems: 'center',
           justifyContent: 'center',
@@ -88,10 +92,11 @@ class SingleOptionList extends React.Component<Props, States> {
               }
               onPress={() => this.onSelect(element.id)}
               onTextInputChange={onTextInputChange}
+              optionalStyles={optionalStyles}
             />
           );
         })}
-      </ScrollView>
+      </View>
     );
   }
 }

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import ListElement from '../ListElement';
 import { CheckedBox, UncheckedBox } from '../svg-icons';
 
@@ -18,6 +18,9 @@ const defaultIcons = {
     </View>
   ),
 };
+
+defaultIcons.checked.displayName = 'CheckedIcon';
+defaultIcons.unchecked.displayName = 'UncheckedIcon';
 
 type Props = {
   items: Array<ListItem>,
@@ -89,9 +92,8 @@ class MultipleOptionList extends React.Component<Props, State> {
       onTextInputChange,
       scrollDisabled,
     } = this.props;
-
     return (
-      <ScrollView
+      <View
         style={{ flex: 1 }}
         contentContainerStyle={{
           alignItems: 'center',
@@ -113,7 +115,7 @@ class MultipleOptionList extends React.Component<Props, State> {
             onTextInputChange={onTextInputChange}
           />
         ))}
-      </ScrollView>
+      </View>
     );
   }
 }
