@@ -32,8 +32,8 @@ type Props = {
     checked: (color: string) => React.Component<*>,
     unchecked: (color: string) => React.Component<*>,
   },
-  scrollDisabled?: boolean,
   selected?: Array<number | string>,
+  style?: Object,
 };
 
 type State = {
@@ -85,22 +85,9 @@ class MultipleOptionList extends React.Component<Props, State> {
   };
 
   render() {
-    const {
-      color,
-      icons,
-      items,
-      onTextInputChange,
-      scrollDisabled,
-    } = this.props;
+    const { color, icons, items, onTextInputChange, style } = this.props;
     return (
-      <View
-        style={{ flex: 1 }}
-        contentContainerStyle={{
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        scrollEnabled={!scrollDisabled}
-      >
+      <View style={style}>
         {items.map(element => (
           <ListElement
             key={element.id}

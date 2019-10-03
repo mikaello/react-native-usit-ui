@@ -18,6 +18,7 @@ type Props = {
   selected?: number | string,
   scrollDisabled?: boolean,
   optionalStyles?: Object,
+  style?: Object,
 };
 
 type States = {
@@ -65,18 +66,12 @@ class SingleOptionList extends React.Component<Props, States> {
       icons,
       items,
       onTextInputChange,
-      scrollDisabled,
+      style,
       optionalStyles,
     } = this.props;
 
     return (
-      <View
-        contentContainerStyle={{
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        scrollEnabled={!scrollDisabled}
-      >
+      <View style={style}>
         {items.map(element => {
           const usesProps = typeof this.props.selected !== 'undefined';
           return (
