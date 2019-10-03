@@ -15,7 +15,7 @@ type Props = {
     checked: (color: string) => React.Component<*>,
     unchecked: (color: string) => React.Component<*>,
   },
-  defaultSelected?: number | string,
+  selected?: number | string,
   scrollDisabled?: boolean,
 };
 
@@ -46,7 +46,7 @@ class SingleOptionList extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selected: props.defaultSelected,
+      selected: '',
     };
   }
 
@@ -56,7 +56,13 @@ class SingleOptionList extends React.Component<Props, States> {
   }
 
   render() {
-    const { color, icons, items, onTextInputChange, scrollDisabled } = this.props;
+    const {
+      color,
+      icons,
+      items,
+      onTextInputChange,
+      scrollDisabled,
+    } = this.props;
 
     return (
       <ScrollView
@@ -67,17 +73,24 @@ class SingleOptionList extends React.Component<Props, States> {
         }}
         scrollEnabled={!scrollDisabled}
       >
-        {items.map(element => (
-          <ListElement
-            key={element.id}
-            item={element}
-            icons={icons}
-            color={color}
-            selected={this.state.selected === element.id}
-            onPress={() => this.onSelect(element.id)}
-            onTextInputChange={onTextInputChange}
-          />
-        ))}
+        {items.map(element => {
+          const usesProps = typeof this.props.selected !== 'undefined';
+          return (
+            <ListElement
+              key={element.id}
+              item={element}
+              icons={icons}
+              color={color}
+              selected={
+                usesProps
+                  ? this.props.selected === element.id
+                  : this.state.selected === element.id
+              }
+              onPress={() => this.onSelect(element.id)}
+              onTextInputChange={onTextInputChange}
+            />
+          );
+        })}
       </ScrollView>
     );
   }

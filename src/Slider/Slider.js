@@ -30,6 +30,7 @@ type SliderProps = {
   lineStyle: View.propTypes.style,
   markerStyle: View.propTypes.style,
   showCenterMarker: boolean,
+  value?: number,
   onTouch?: () => void,
   onRelease?: () => void,
 };
@@ -257,10 +258,10 @@ class Slider extends React.Component<SliderProps, SliderState> {
               position: vertical ? 'absolute' : undefined,
               textAlign: 'center',
               fontWeight: 'bold',
-              left: vertical ? size/2 - 40 : 0,
+              left: vertical ? size / 2 - 40 : 0,
             }}
           >
-            {this.state.value !== -1000 ? this.state.value : ' ' }
+            {this.state.value !== -1000 ? this.state.value : ' '}
           </CustomText>
         )}
         <View
@@ -325,10 +326,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
                   <SliderMarkers
                     markerCount={0}
                     width={10}
-                    style={[
-                      styles.defaultMarkerStyle,
-                      markerStyle,
-                    ]}
+                    style={[styles.defaultMarkerStyle, markerStyle]}
                   />
                 )}
               </View>
