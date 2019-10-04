@@ -13,7 +13,6 @@ import { colors, constants } from '../styles';
 
 const { height, width } = Dimensions.get('window');
 const midValue = width / height;
-const rowHeight = height * 0.08;
 
 export type ListItem = {
   id: string | number,
@@ -35,6 +34,7 @@ type Props = {
     unchecked: (color: string, disabled: boolean) => React.Component<*>,
   },
   color: string,
+  optionalStyles?: Object,
 };
 
 class ListElement extends React.Component<Props> {
@@ -61,13 +61,14 @@ class ListElement extends React.Component<Props> {
       onPress,
       onTextInputChange,
       disabled,
+      optionalStyles,
     } = this.props;
     // The color design of the rows is based on opacity, so HEX values is used
     const selectedColor = color && `${color}33`;
     const unselectedColor = color && `${color}10`;
 
     return (
-      <View>
+      <View style={{ alignSelf: 'stretch' }}>
         <TouchableOpacity
           activeOpacity={constants.activeOpacity}
           onPress={() => !disabled && onPress()}
@@ -76,6 +77,7 @@ class ListElement extends React.Component<Props> {
             {
               backgroundColor: selected ? selectedColor : unselectedColor,
             },
+            optionalStyles && optionalStyles.row,
           ]}
         >
           <View style={{ flexDirection: 'row' }}>
@@ -86,9 +88,12 @@ class ListElement extends React.Component<Props> {
             </View>
             <View style={styles.text}>
               <CustomText
-                style={{
-                  fontSize: midValue * 36,
-                }}
+                style={[
+                  {
+                    fontSize: midValue * 36,
+                  },
+                  optionalStyles && optionalStyles.optionText,
+                ]}
               >
                 {item.text}
               </CustomText>
@@ -98,7 +103,12 @@ class ListElement extends React.Component<Props> {
             <View style={{ flexDirection: 'row', marginBottom: 18 }}>
               <View style={{ flex: 0.157 }} />
               <View style={{ flex: 0.83 }}>
-                <CustomText style={{ fontSize: midValue * 27 }}>
+                <CustomText
+                  style={[
+                    { fontSize: midValue * 27 },
+                    optionalStyles && optionalStyles.subText,
+                  ]}
+                >
                   {item.subText}
                 </CustomText>
               </View>
@@ -122,7 +132,6 @@ class ListElement extends React.Component<Props> {
 const styles = StyleSheet.create({
   row: {
     marginBottom: 12,
-    width: width * 0.9,
     borderRadius: constants.borderRadius,
   },
   iconContainer: {
@@ -132,8 +141,9 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 14,
-    width: width * 0.75,
     marginBottom: 15,
+    marginRight: 15,
+    flex: 1,
   },
   textInput: {
     borderWidth: 1,

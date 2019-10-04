@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import ListElement from '../ListElement';
 import { CheckedBox, UncheckedBox } from '../svg-icons';
 
@@ -19,6 +19,9 @@ const defaultIcons = {
   ),
 };
 
+defaultIcons.checked.displayName = 'CheckedIcon';
+defaultIcons.unchecked.displayName = 'UncheckedIcon';
+
 type Props = {
   items: Array<ListItem>,
   maxOptions: ?number,
@@ -29,8 +32,8 @@ type Props = {
     checked: (color: string) => React.Component<*>,
     unchecked: (color: string) => React.Component<*>,
   },
-  scrollDisabled?: boolean,
   selected?: Array<number | string>,
+  style?: Object,
 };
 
 type State = {
@@ -82,23 +85,9 @@ class MultipleOptionList extends React.Component<Props, State> {
   };
 
   render() {
-    const {
-      color,
-      icons,
-      items,
-      onTextInputChange,
-      scrollDisabled,
-    } = this.props;
-
+    const { color, icons, items, onTextInputChange, style } = this.props;
     return (
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        scrollEnabled={!scrollDisabled}
-      >
+      <View style={style}>
         {items.map(element => (
           <ListElement
             key={element.id}
@@ -113,7 +102,7 @@ class MultipleOptionList extends React.Component<Props, State> {
             onTextInputChange={onTextInputChange}
           />
         ))}
-      </ScrollView>
+      </View>
     );
   }
 }
