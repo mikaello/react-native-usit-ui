@@ -15,6 +15,7 @@ const { width } = Dimensions.get('window');
 
 type SliderProps = {
   animate: number,
+  animationDuration: number,
   size: number,
   min: number,
   max: number,
@@ -24,6 +25,7 @@ type SliderProps = {
   labels?: string[],
   showValueLabel?: boolean,
   vertical?: boolean,
+  verticalWidth?: number,
   onValueChange: number => void,
   lineContainerHeight: number,
   thumbStyle: View.propTypes.style,
@@ -53,6 +55,7 @@ type SyntheticTouchEventLike = {
 class Slider extends React.Component<SliderProps, SliderState> {
   static defaultProps = {
     animate: true,
+    animationDuration: 300,
     onValueChange: () => {},
     size: width * 0.9,
     min: 0,
@@ -131,7 +134,14 @@ class Slider extends React.Component<SliderProps, SliderState> {
     ) {
       return;
     }
-    this.props.animate && LayoutAnimation.easeInEaseOut();
+    this.props.animate &&
+      LayoutAnimation.configureNext(
+        LayoutAnimation.create(
+          this.props.animationDuration,
+          'easeInEaseOut',
+          'opacity',
+        ),
+      );
   }
 
   measureHelper = () => {
@@ -227,6 +237,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
     const {
       size,
       vertical,
+      verticalWidth,
       labels,
       lineStyle,
       min,
@@ -245,7 +256,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
     return (
       <View
         style={{
-          width: size,
+          width: vertical && verticalWidth ? verticalWidth : size,
           justifyContent: 'space-around',
           alignItems: vertical ? 'center' : undefined,
           flexDirection: vertical ? 'row' : 'column',
