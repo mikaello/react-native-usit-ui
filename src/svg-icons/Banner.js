@@ -60,7 +60,7 @@ const Banner = ({
         <Text
           fill="white"
           x="146.5"
-          y="7"
+          y="37"
           fontSize="25"
           fontWeight="300"
           textAnchor="middle"
