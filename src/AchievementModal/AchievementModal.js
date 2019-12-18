@@ -106,6 +106,7 @@ class AchievementModal extends React.Component<Props> {
                 style={{
                   fontWeight: 'bold',
                   fontSize: 18,
+                  textAlign: 'center',
                 }}
               >
                 {title}
