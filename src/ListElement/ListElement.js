@@ -118,6 +118,7 @@ class ListElement extends React.Component<Props> {
         {item.textInput &&
           selected && (
             <TextInput
+              autoFocus
               style={styles.textInput}
               placeholder={item.inputPlaceholder}
               onChangeText={onTextInputChange}
@@ -152,7 +153,6 @@ const styles = StyleSheet.create({
     fontSize: midValue * 36,
     paddingVertical: 10,
     paddingLeft: 16,
-    marginLeft: width * 0.14,
     marginBottom: 12,
   },
 });
