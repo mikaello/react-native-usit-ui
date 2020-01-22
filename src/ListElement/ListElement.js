@@ -20,6 +20,8 @@ export type ListItem = {
   subText?: string,
   textInput?: boolean,
   inputPlaceholder?: string,
+  inputValue?: string,
+  inputDefaultValue?: string,
   inputKeyboardType?: string,
 };
 
@@ -121,6 +123,8 @@ class ListElement extends React.Component<Props> {
               autoFocus
               style={styles.textInput}
               placeholder={item.inputPlaceholder}
+              value={item.inputValue}
+              defaultValue={item.inputDefaultValue}
               onChangeText={onTextInputChange}
               keyboardType={item.inputKeyboardType}
             />
